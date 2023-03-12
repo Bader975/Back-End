@@ -1,5 +1,5 @@
 import express from "express";
-import { Hello, Login, createUser,  getallUsers } from "../controller/user.controller";
+import { UpdateUser, Login, createUser,  getUserByID } from "../controller/user.controller";
 import { validate } from "../middleware/validate";
 import { userVaild, userlogin } from "../zod.schema/user.zod";
 import auth from "../middleware/auth";
@@ -7,10 +7,13 @@ import auth from "../middleware/auth";
 let router = express.Router();
 
 
-router.get('/user', getallUsers)
-router.post('/user/login', Login)
+router.get('/',auth, getUserByID)
+router.post('/',auth,validate(userVaild),createUser)
+router.post('/login', Login)
+router.put('/',auth,validate(userVaild),UpdateUser)
 
-router.post('/user',validate(userVaild),createUser)
+
+
 
 
 
