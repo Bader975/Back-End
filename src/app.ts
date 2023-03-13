@@ -10,9 +10,9 @@ import cors from 'cors';
 
 const app:Application= express();
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 app.use('/',Routerindex);
-app.use(cors());
 
 
 // Port
