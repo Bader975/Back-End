@@ -12,27 +12,33 @@ datasource db {
 
 model User {
   id           String    @id @default(uuid())
+  employeeID   String?
+  role         Role     @default(Admin) 
   name         String
   email        String
   password     String
   phone_number Int?
   Project      Project[]
   Profill      Profile?
+  Idea         Idea[]
 }
 
 model Project {
-  id         String @id @default(uuid())
-  title      String
-  nameOfCamp String
-  projectURL String
-  img        String
-  userID     String
-  user       User   @relation(fields: [userID], references: [id])
+  id          String @id @default(uuid())
+  title       String
+  nameOfCamp  String
+  discription String
+  projectURL  String
+  img         String
+  userID      String
+  user        User   @relation(fields: [userID], references: [id])
+  camp        Camp   @relation(fields: [nameOfCamp], references: [name])
 }
 
 model Profile {
   id            String  @id @default(uuid())
   aboutMy       String?
+  img           String?
   skill         String?
   hobby         String?
   twitterURL    String?
@@ -40,4 +46,33 @@ model Profile {
   nameOfpajeURL String?
   userID        String  @unique
   user          User    @relation(fields: [userID], references: [id])
+}
+
+// model AdminUser {
+//   id         String @id @default(uuid())
+//   employeeID String @unique
+//   name       String
+//   email      String
+//   password   String
+// }
+
+model Camp {
+  id      String    @id @default(uuid())
+  name    String    @unique
+  date    String
+  project Project[]
+}
+
+enum Role {
+  User
+  Admin
+  Company
+}
+
+model Idea {
+  id          String @id @default(uuid())
+  title       String
+  discription String
+  userID      String
+  user        User   @relation(fields: [userID], references: [id])
 }

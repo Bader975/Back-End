@@ -7,7 +7,16 @@ export const createProject = async (req: Request, res: Response) => {
     try {
         let data=req.body
         let newProject=await prisma.project.create({
-            data:data
+            data:{
+                
+                    title:req.body.title,
+                    nameOfCamp:req.body.nameOfCamp,
+                    discription:req.body.discription,
+                    projectURL:req.body.projectURL,
+                    img:req.body.img,
+                    userID:res.locals.user.id
+                
+            }
         })
         res.json({
             msg:'project created',
@@ -92,6 +101,21 @@ export const getAllProjectByID = async (req: Request, res: Response) => {
         })
         res.json({
             Project
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
+
+export const countAllProject = async (req: Request, res: Response) => {
+    try {
+        
+        let numOfproject=await prisma.project.count()
+        res.json({
+            numOfproject
         })
         
     } catch (error) {

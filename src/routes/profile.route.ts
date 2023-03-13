@@ -1,15 +1,15 @@
 import express from "express";
 import {createProfile,UpdateProfile,deleteProfile,getProfiletByID} from "../controller/profille.controller"
 import { validate } from "../middleware/validate";
-import auth from "../middleware/auth";
+import { protect, authorize }from "../middleware/auth";
 
 let router = express.Router();
 
 
-router.get('/',auth,getProfiletByID)
-router.post('/',auth,createProfile)
-router.put('/:id',auth,UpdateProfile)
-router.delete('/:id',auth,deleteProfile)
+router.get('/',protect,authorize('User'),getProfiletByID)
+router.post('/',protect,authorize('User'),createProfile)
+router.put('/:id',protect,authorize('User'),UpdateProfile)
+router.delete('/:id',protect,authorize('User'),deleteProfile)
 
 
 
