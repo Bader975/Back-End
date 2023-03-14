@@ -5,17 +5,15 @@ import { Request, Response } from "express";
 // add new project
 export const createProject = async (req: Request, res: Response) => {
     try {
-        let data=req.body
+       
         let newProject=await prisma.project.create({
             data:{
-                
                     title:req.body.title,
                     nameOfCamp:req.body.nameOfCamp,
                     discription:req.body.discription,
                     projectURL:req.body.projectURL,
                     img:req.body.img,
                     userID:res.locals.user.id
-                
             }
         })
         res.json({
@@ -77,7 +75,15 @@ export const deleteProject = async (req: Request, res: Response) => {
 export const getAllProject = async (req: Request, res: Response) => {
     try {
         
-        let Project=await prisma.project.findMany()
+        let Project=await prisma.project.findMany({
+            select:{
+                user:{
+                    select:{
+                        
+                    }
+                }
+            }
+        })
         res.json({
             Project
         })

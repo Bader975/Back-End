@@ -19,7 +19,6 @@ export const createProfile = async (req: Request, res: Response) => {
         
     }
 }
-
 //update profile
 export const UpdateProfile = async (req: Request, res: Response) => {
     try {
@@ -62,7 +61,6 @@ export const deleteProfile = async (req: Request, res: Response) => {
         
     }
 }
-
 // get all profile 
 export const getAllprofile = async (req: Request, res: Response) => {
     try {
@@ -78,8 +76,6 @@ export const getAllprofile = async (req: Request, res: Response) => {
     }
 
 }
-
-
 // get all profile for user 
 export const getProfiletByID = async (req: Request, res: Response) => {
     try {

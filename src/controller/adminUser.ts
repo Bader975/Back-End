@@ -40,7 +40,6 @@ export const UpdateCamp = async (req: Request, res: Response) => {
         
     }
 }
-
 export const deleteCamp = async (req: Request, res: Response) => {
     try {
         let Camp=await prisma.camp.deleteMany({
@@ -59,7 +58,6 @@ export const deleteCamp = async (req: Request, res: Response) => {
         
     }
 }
-
 export const getAllCamp = async (req: Request, res: Response) => {
     try {
         
@@ -74,7 +72,6 @@ export const getAllCamp = async (req: Request, res: Response) => {
     }
 
 }
-
 export const deleteProject = async (req: Request, res: Response) => {
     try {
        
@@ -94,7 +91,6 @@ export const deleteProject = async (req: Request, res: Response) => {
         
     }
 }
-
 export const countAllCamp = async (req: Request, res: Response) => {
     try {
         
