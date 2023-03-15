@@ -48,6 +48,23 @@ export const UpdateProject = async (req: Request, res: Response) => {
         
     }
 }
+export const getProject = async (req: Request, res: Response) => {
+    try {
+        let Project=await prisma.project.findFirst({
+            where:{
+                id:req.params.id,
+                userID:res.locals.user.id
+            },
+        })
+        res.json({
+            Project
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 
 //delete prpject
 export const deleteProject = async (req: Request, res: Response) => {
@@ -105,7 +122,7 @@ export const get3Project = async (req: Request, res: Response) => {
     try {
         
         let Project=await prisma.project.findMany({
-           
+           take:3,
             select:{
                 id:true,
                 title:true,
