@@ -39,7 +39,7 @@ export const UpdateProject = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'project updated',
+            message:'تم تحديث المشروع',
             Project
         })
         
@@ -61,7 +61,7 @@ export const deleteProject = async (req: Request, res: Response) => {
           
         })
         res.json({
-            msg:'project Deleted',
+            message:'تم حذف المشروع',
             Project
         })
         
@@ -76,6 +76,36 @@ export const getAllProject = async (req: Request, res: Response) => {
     try {
         
         let Project=await prisma.project.findMany({
+            select:{
+                id:true,
+                title:true,
+                discription:true,
+                img:true,
+                nameOfCamp:true,
+                user:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        })
+        res.json({
+            Project
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
+
+// get all project 
+export const get3Project = async (req: Request, res: Response) => {
+    try {
+        
+        let Project=await prisma.project.findMany({
+           
             select:{
                 id:true,
                 title:true,
@@ -137,7 +167,7 @@ export const getAllProjectByID = async (req: Request, res: Response) => {
         
         let Project=await prisma.project.findMany({
             where:{
-                userID:res.locals.id
+                userID:res.locals.user.id
             }
         })
         res.json({

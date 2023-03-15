@@ -30,7 +30,7 @@ export const createUser = async (req: Request, res: Response) => {
       })
   
       if (newUser) {
-        res.status(200).json({ message: "The user has been created", newUser ,
+        res.status(200).json({ message: "تم انشاء الحساب بنجاح", newUser ,
       hh:"the profile is",newprofile});
       }
     } catch (error) {
@@ -51,7 +51,7 @@ export const createUser = async (req: Request, res: Response) => {
               }
         })
         res.json({
-            msg:"user updated",
+          message:"تم تحديث بياتات المستخدم",
             
         })
         
@@ -91,6 +91,8 @@ export const Login = async (req: Request, res: Response) => {
         .send({
           message: `اهلا وسهلا بك ${user.name} `,
           token: token,
+          role:user.role,
+          name:user.name
         });
     }
   } catch (error) {

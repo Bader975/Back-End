@@ -83,6 +83,7 @@ export const getAllIdea = async (req: Request, res: Response) => {
         
         let Idea=await prisma.idea.findMany({
             select:{
+                id:true,
                 title:true,
                 discription:true,
                 user:{
@@ -110,7 +111,7 @@ export const getAllIdeaByID = async (req: Request, res: Response) => {
         
         let Idea=await prisma.idea.findMany({
             where:{
-                userID:res.locals.id
+                userID:res.locals.user.id
             }
         })
         res.json({
