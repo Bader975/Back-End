@@ -20,7 +20,7 @@ export const createIdea = async (req: Request, res: Response) => {
             
         })
         res.json({
-            msg:'Idea created',
+            message:'تم انشاء الفكرة ',
             Idea
         })
         
@@ -46,7 +46,7 @@ export const UpdateIdea = async (req: Request, res: Response) => {
             }
         })
         res.json({
-            msg:'Idea updated',
+            message:'تم تحديث الفكرة بنجاح',
             Project
         })
         
@@ -67,7 +67,7 @@ export const deleteIdea = async (req: Request, res: Response) => {
           
         })
         res.json({
-            msg:'Idea Deleted',
+            message:'تم حذف الفكرة بنجاح',
             Idea
         })
         

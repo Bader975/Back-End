@@ -10,7 +10,7 @@ export const createCamp = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'Camp created',
+            msg:'تم انشاء المعسكر',
             Camp
         })
         
@@ -31,7 +31,8 @@ export const UpdateCamp = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'Camp updated',
+            message:'تم تحديث المعسكر',
+      
             Camp
         })
         
@@ -49,7 +50,7 @@ export const deleteCamp = async (req: Request, res: Response) => {
           
         })
         res.json({
-            msg:'Camp Deleted',
+            message:'تم حذف المعسكر',
             Camp
         })
         
@@ -82,7 +83,7 @@ export const deleteProject = async (req: Request, res: Response) => {
           
         })
         res.json({
-            msg:'project Deleted',
+            message:'تم حذف الشمروع',
             Project
         })
         

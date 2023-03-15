@@ -13,7 +13,7 @@ const protect = (req: Request, res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
     if (!header) {
       return res.status(401).json({
-        message: 'You are not authorized 88to enter this route',
+        message: 'عذراً ! ليس لديك صلاحية لدخول هذه الصفحة',
       });
     }
     
@@ -24,7 +24,7 @@ const protect = (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (error) {
     return res.status(401).json({
-      message: 'You are not authorized to 33enter this route',
+      message: 'عذراً ! ليس لديك صلاحية لدخول هذه الصفحة',
     });
   }
 };
@@ -37,7 +37,7 @@ const authorize =
     
     if (!roles.includes(user.role)) {
       return res.status(403).json({
-        message: 'You are not authorized to gg enter this route !',
+        message: 'عذراً ! ليس لديك صلاحية لدخول هذه الصفحة',
       });
     }
     next();

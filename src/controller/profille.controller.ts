@@ -10,7 +10,7 @@ export const createProfile = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'profile created',
+            message:'تم انشاء الملف الشخصي',
             newProfile
         })
         
@@ -31,7 +31,7 @@ export const UpdateProfile = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'profile updated',
+            message:'تم تحديث الملف الشخصي',
             profile
         })
         
@@ -52,7 +52,7 @@ export const deleteProfile = async (req: Request, res: Response) => {
           
         })
         res.json({
-            msg:'profile Deleted',
+            message:'تم حذف الملف الشخصي',
             profile
         })
         
