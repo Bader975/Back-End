@@ -3,17 +3,17 @@ import { z,TypeOf } from "zod";
 export const userVaild = z.object({
     body:z.object({
         name:z.string({ 
-            required_error: "Name is required",
-            invalid_type_error: "Name must be a string",
+            required_error: "يجب ادخال الاسم",
+            invalid_type_error: "الاسم يجب ان يكون نص",
     }),
 
         password :z.string({
-            required_error: "password is required",
-            invalid_type_error: "password must be a Number and String",
+            required_error: "يجب ادخال كلمة السر",
+            invalid_type_error: "يجب ان تكون كلمة السر احرف و ارقام",
     })
-  .min(5, { message: "Must be 5 or more characters long" }),
+  .min(5, { message: "يجب ان تكون كلمة السر اكصر من 5 احرف او ارقام" }),
   email :z.string({
-    required_error: "email is required",
+    required_error: "يجب عليك ادخال البريد الالكتروني",
     
 })
 ,
@@ -30,15 +30,15 @@ role:z.string({
 export const userlogin = z.object({
     body:z.object({
         password :z.string({
-            required_error: "password is required",
-            invalid_type_error: "password must be a Number and String",
+          required_error: "يجب ادخال كلمة السر",
+          invalid_type_error: "يجب ان تكون كلمة السر احرف و ارقام",
     })
-  .min(5, { message: "Must be 5 or more characters long" }),
+    .min(5, { message: "يجب ان تكون كلمة السر اكصر من 5 احرف او ارقام" }),
   
 
 
   email :z.string({
-    required_error: "email is required",
+    required_error: "يجب عليك ادخال البريد الالكتروني",
     
 })
 // .email({ message: "Invalid email address" })

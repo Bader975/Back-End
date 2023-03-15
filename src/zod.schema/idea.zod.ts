@@ -8,13 +8,14 @@ export const ideatVaild = z.object({
     }),
     body:z.object({
       title:z.string({
-          required_error: "title is required",
-          invalid_type_error: "title must be a string",
+          required_error: " يجب ادخال عنوان للفكرة ",
+          invalid_type_error: "  يجب ان تكون الفكرة احرف",
   })
   ,
   discription :z.string({
-  required_error: "discription is required",
-  })
+    required_error:"يجب ادخال وصف المشروع",
+    
+    })
   }),
   
   });

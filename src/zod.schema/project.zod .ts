@@ -3,32 +3,32 @@ import { z,TypeOf } from "zod";
 export const projectVaild = z.object({
   Header:z.object({
     authorization:z.string({
-      required_error: "authorization is required",
+      required_error: "لا يوجد لديك تصريح",
     })
   }),
   body:z.object({
     title:z.string({
-        required_error: "title is required",
-        invalid_type_error: "title must be a string",
+        required_error: "ادخل عنوان المشروع",
+        invalid_type_error: "يجب ادخال عنوان المشروع ",
 })
-.min(2, { message: " name Must be 2 or more characters long" }),
+.min(2, { message: " يجب ان يكون اكثر من 2 احرف" }),
 nameOfCamp :z.string({
-        required_error: "name Of Camp is required",
-        invalid_type_error: "nameOfCamp must be a String",
+        required_error: "يجب ادخال اسم المعسكر",
+        invalid_type_error: "اسم المعسكر يجب ان يكون احرف",
 })
-.min(5, { message: "Must be 5 or more characters long" }),
+.min(5, { message: "يجب ان يكون اكثر من 5 احرف" }),
 discription :z.string({
-required_error: "discription is required",
+required_error:"يجب ادخال وصف المشروع",
 
 })
 ,
 
 projectURL:z.string({
-required_error: "project URL is required",
+required_error: "يجب ادخال اسم رابط الشمروع",
 
 }),
 img:z.string({
-  required_error: "img is required",
+  required_error: "يجب ادخال صور للمشروع",
   
   })
 }),
