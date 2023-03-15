@@ -76,3 +76,4 @@ model Idea {
   userID      String
   user        User   @relation(fields: [userID], references: [id])
 }
+

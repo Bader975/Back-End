@@ -22,9 +22,16 @@ export const createUser = async (req: Request, res: Response) => {
          role:req.body.role as Role
         },
       });
+
+      let newprofile=await prisma.profile.create({
+        data:{
+          userID:newUser.id
+        }
+      })
   
       if (newUser) {
-        res.status(200).json({ msg: "The user has been created", newUser });
+        res.status(200).json({ message: "The user has been created", newUser ,
+      hh:"the profile is",newprofile});
       }
     } catch (error) {
       res.status(500).json(error);
@@ -82,7 +89,7 @@ export const Login = async (req: Request, res: Response) => {
       res
         .status(200)
         .send({
-          message: `Hello Aging ${user.name}  And Your email ${user.email}`,
+          message: `اهلا وسهلا بك ${user.name} `,
           token: token,
         });
     }

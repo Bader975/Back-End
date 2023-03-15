@@ -77,9 +77,14 @@ export const getAllProject = async (req: Request, res: Response) => {
         
         let Project=await prisma.project.findMany({
             select:{
+                id:true,
+                title:true,
+                discription:true,
+                img:true,
+                nameOfCamp:true,
                 user:{
                     select:{
-                        
+                        name:true
                     }
                 }
             }
@@ -95,6 +100,36 @@ export const getAllProject = async (req: Request, res: Response) => {
 
 }
 
+// get all project 
+export const getProjectByID = async (req: Request, res: Response) => {
+    try {
+        
+        let Project=await prisma.project.findMany({
+            where:{
+                id:req.params.id
+            },
+            select:{
+                title:true,
+                discription:true,
+                img:true,
+                nameOfCamp:true,
+                user:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        })
+        res.json({
+            Project
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
 
 // get all project for user 
 export const getAllProjectByID = async (req: Request, res: Response) => {
@@ -119,9 +154,10 @@ export const getAllProjectByID = async (req: Request, res: Response) => {
 export const countAllProject = async (req: Request, res: Response) => {
     try {
         
-        let numOfproject=await prisma.project.count()
+        let projects=await prisma.project.count({
+        })
         res.json({
-            numOfproject
+            projects
         })
         
     } catch (error) {
@@ -130,3 +166,4 @@ export const countAllProject = async (req: Request, res: Response) => {
     }
 
 }
+

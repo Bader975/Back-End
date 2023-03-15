@@ -81,7 +81,17 @@ export const deleteIdea = async (req: Request, res: Response) => {
 export const getAllIdea = async (req: Request, res: Response) => {
     try {
         
-        let Idea=await prisma.idea.findMany()
+        let Idea=await prisma.idea.findMany({
+            select:{
+                title:true,
+                discription:true,
+                user:{
+                    select:{
+                        name:true
+                    }
+                }
+            }
+        })
         res.json({
             Idea
         })
