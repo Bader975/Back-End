@@ -17,7 +17,7 @@ export const createProject = async (req: Request, res: Response) => {
             }
         })
         res.json({
-            msg:'project created',
+            message:'تم انشاء المشروع بنجاح',
             newProject
         })
         
