@@ -50,12 +50,13 @@ export const UpdateProject = async (req: Request, res: Response) => {
 }
 export const getProject = async (req: Request, res: Response) => {
     try {
-        let Project=await prisma.project.findFirst({
+        let Project=await prisma.project.findMany({
             where:{
                 id:req.params.id,
-                userID:res.locals.user.id
             },
         })
+        console.log(Project);
+        
         res.json({
             Project
         })

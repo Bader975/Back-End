@@ -13,7 +13,7 @@ router.get('/last3', get3Project)
 router.get('/:id', getProject)      
 router.get('/',protect,authorize('User'),getAllProjectByID)
 router.post('/',protect,authorize('User'),createProject)
-router.put('/:id',validate(projectVaild),protect,authorize('User'), UpdateProject)
+router.put('/:id',protect,authorize('User'), UpdateProject)
 router.delete('/:id',protect,authorize('User'), deleteProject)
 router.get('/countAll',countAllProject)
 

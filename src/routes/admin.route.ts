@@ -8,7 +8,8 @@ let router = express.Router();
 
 
 router.post('/camp',protect,authorize('Admin'),createCamp)
-router.put('/camp/:id',validate(campVaild),protect,authorize('Admin'),UpdateCamp)
+// ,validate(campVaild)
+router.put('/camp/:id',protect,authorize('Admin'),UpdateCamp)
 router.delete('/camp/:id',protect,authorize('Admin'),deleteCamp)
 router.delete('/project/:id',protect,authorize('Admin'),deleteProject)
 
