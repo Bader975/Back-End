@@ -53,7 +53,19 @@ export const getProject = async (req: Request, res: Response) => {
         let Project=await prisma.project.findMany({
             where:{
                 id:req.params.id,
-            },
+            },select:{
+                title:true,
+                discription:true,
+                nameOfCamp:true,
+                projectURL:true,
+                img:true,
+                user:{
+                    select:{
+                        name:true,
+                       
+                    }
+                }
+            }
         })
         console.log(Project);
         
