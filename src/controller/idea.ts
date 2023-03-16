@@ -124,3 +124,22 @@ export const getAllIdeaByID = async (req: Request, res: Response) => {
     }
 
 }
+
+export const getIdeaByID = async (req: Request, res: Response) => {
+    try {
+        
+        let Idea=await prisma.idea.findMany({
+            where:{
+                id:req.params.id
+            }
+        })  
+        res.json({
+            Idea
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
