@@ -25,7 +25,6 @@ export const UpdateProfile = async (req: Request, res: Response) => {
         let data=req.body
         let profile=await prisma.profile.updateMany({
             where:{
-                id:req.params.id,
                 userID:res.locals.user.id
             },
             data:data
@@ -80,9 +79,40 @@ export const getAllprofile = async (req: Request, res: Response) => {
 export const getProfiletByID = async (req: Request, res: Response) => {
     try {
         
-        let profile=await prisma.profile.findMany({
+        let profile=await prisma.profile.findFirst({
             where:{
                 userID:res.locals.id
+            }
+        })
+        res.json({
+            profile
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+
+}
+
+export const getProfile = async (req: Request, res: Response) => {
+    try {
+        console.log("hh");
+        
+        let profile=await prisma.profile.findFirst({
+            where:{
+                id:req.params.id
+            },
+            select:{
+                aboutMy:true,
+                skill:true,
+                twitterURL:true,
+                user:{
+                    select:{
+                        email:true,
+                        name:true
+                    }
+                }
             }
         })
         res.json({
