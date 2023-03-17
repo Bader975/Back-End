@@ -33,7 +33,7 @@ export const userlogin = z.object({
           required_error: "يجب ادخال كلمة السر",
           invalid_type_error: "يجب ان تكون كلمة السر احرف و ارقام",
     })
-    .min(5, { message: "يجب ان تكون كلمة السر اكصر من 5 احرف او ارقام" }),
+    .min(5, { message: "يجب ان تكون كلمة السر اكثر من 5 احرف او ارقام" }),
   
 
 
