@@ -26,6 +26,7 @@ export const UpdateProfile = async (req: Request, res: Response) => {
         let profile=await prisma.profile.updateMany({
             where:{
                 id:req.params.id,
+                // id:res.locals.user.id,
                 userID:res.locals.user.id
             },
             data:data
@@ -82,8 +83,25 @@ export const getProfiletByID = async (req: Request, res: Response) => {
         
         let profile=await prisma.profile.findMany({
             where:{
-                userID:res.locals.id
+                // userID:res.locals.id
+                userID:res.locals.user.id        
+                },
+            select:{
+                aboutMy:true,
+                skill:true,
+                img:true,
+                twitterURL:true,
+
+                user:{
+                    select:{
+                        email:true,
+                        phone_number:true,
+                        name:true
+                       
+                    }
+                }
             }
+            
         })
         res.json({
             profile

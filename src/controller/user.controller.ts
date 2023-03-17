@@ -72,7 +72,7 @@ export const Login = async (req: Request, res: Response) => {
     });
     //   ES6 if else
     if (!user) {
-      res.json({ message: "worng email address!!" });
+      res.status(401).json({ message: "خطاء في البريد او كلمة المرور !" });
     } else if (!(await argon2.verify(user.password, req.body.password))) {
       res.json({ message: `worng password !! ` });
     } else {
