@@ -31,9 +31,9 @@ export const UpdateProfile = async (req: Request, res: Response) => {
             },
             data:data
         })
-        res.json({
+        res.status(200).json({
             message:'تم تحديث الملف الشخصي',
-            profile
+            // profile
         })
         
     } catch (error) {

@@ -50,7 +50,7 @@ export const createUser = async (req: Request, res: Response) => {
                 phone_number:req.body.phone_number,
               }
         })
-        res.json({
+        res.status(200).json({
           message:"تم تحديث بياتات المستخدم",
             
         })

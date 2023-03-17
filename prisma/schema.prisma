@@ -17,7 +17,7 @@ model User {
   name         String
   email        String
   password     String
-  phone_number Int?
+  phone_number String?
   Project      Project[]
   Profill      Profile?
   Idea         Idea[]
