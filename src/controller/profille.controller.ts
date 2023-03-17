@@ -120,7 +120,11 @@ export const getProfile = async (req: Request, res: Response) => {
         
         let profile=await prisma.profile.findFirst({
             where:{
-                id:req.params.id
+                // id:req.params.id
+                user:{
+                    id:req.params.id
+                }
+
             },
             select:{
                 aboutMy:true,

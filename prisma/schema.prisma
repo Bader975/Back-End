@@ -48,13 +48,7 @@ model Profile {
   user          User    @relation(fields: [userID], references: [id])
 }
 
-// model AdminUser {
-//   id         String @id @default(uuid())
-//   employeeID String @unique
-//   name       String
-//   email      String
-//   password   String
-// }
+
 
 model Camp {
   id      String    @id @default(uuid())

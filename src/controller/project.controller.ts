@@ -5,7 +5,6 @@ import { Request, Response } from "express";
 // add new project
 export const createProject = async (req: Request, res: Response) => {
     try {
-       
         let newProject=await prisma.project.create({
             data:{
                     title:req.body.title,
@@ -20,7 +19,6 @@ export const createProject = async (req: Request, res: Response) => {
             message:'تم انشاء المشروع بنجاح',
             newProject
         })
-        
     } catch (error) {
         console.log(error);
         
@@ -62,7 +60,7 @@ export const getProject = async (req: Request, res: Response) => {
                 user:{
                     select:{
                         name:true,
-                       
+                      
                     }
                 }
             }
@@ -114,7 +112,8 @@ export const getAllProject = async (req: Request, res: Response) => {
                 nameOfCamp:true,
                 user:{
                     select:{
-                        name:true
+                        name:true,
+                        id:true
                     }
                 }
             }
