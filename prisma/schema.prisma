@@ -39,7 +39,7 @@ model Project {
 model Profile {
   id            String  @id @default(uuid())
   aboutMy       String?
-  img           String  @default("https://bit.ly/broken-link")
+  img           String ? @default("https://bit.ly/broken-link")
   skill         String?
   hobby         String?
   twitterURL    String?
