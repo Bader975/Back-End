@@ -77,6 +77,41 @@ export const getProject = async (req: Request, res: Response) => {
     }
 }
 
+
+export const getTheUserProject = async (req: Request, res: Response) => {
+    try {
+        let Project=await prisma.project.findMany({
+            where:{
+                user:{
+                    id:req.params.id
+                }
+            },select:{
+                id:true,
+                title:true,
+                discription:true,
+                nameOfCamp:true,
+                projectURL:true,
+                img:true,
+                user:{
+                    select:{
+                        name:true,
+                      
+                    }
+                }
+            }
+        })
+        console.log(Project);
+        
+        res.json({
+            Project
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
 //delete prpject
 export const deleteProject = async (req: Request, res: Response) => {
     try {
