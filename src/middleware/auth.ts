@@ -19,7 +19,7 @@ const protect = (req: Request, res: Response, next: NextFunction) => {
     
     const user = jwt.verify(header, process.env.MY_SECRETKEY as string) as IUser;
 
-    res.locals.user = user;
+    res.locals.user = user as IUser ;
 
     next();
   } catch (error) {

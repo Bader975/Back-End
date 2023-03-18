@@ -13,7 +13,7 @@ datasource db {
 model User {
   id           String    @id @default(uuid())
   employeeID   String?
-  role         Role     @default(Admin) 
+  role         Role
   name         String
   email        String
   password     String
@@ -30,6 +30,7 @@ model Project {
   discription String
   projectURL  String
   img         String
+  date        String
   userID      String
   user        User   @relation(fields: [userID], references: [id])
   camp        Camp   @relation(fields: [nameOfCamp], references: [name])
@@ -38,7 +39,7 @@ model Project {
 model Profile {
   id            String  @id @default(uuid())
   aboutMy       String?
-  img           String?
+  img           String  @default("https://bit.ly/broken-link")
   skill         String?
   hobby         String?
   twitterURL    String?
@@ -47,8 +48,6 @@ model Profile {
   userID        String  @unique
   user          User    @relation(fields: [userID], references: [id])
 }
-
-
 
 model Camp {
   id      String    @id @default(uuid())
@@ -70,4 +69,3 @@ model Idea {
   userID      String
   user        User   @relation(fields: [userID], references: [id])
 }
-

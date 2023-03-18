@@ -178,7 +178,8 @@ export const get3Project = async (req: Request, res: Response) => {
                 nameOfCamp:true,
                 user:{
                     select:{
-                        name:true
+                        name:true,
+                        id:true
                     }
                 }
             }
