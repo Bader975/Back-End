@@ -73,9 +73,15 @@ export const Login = async (req: Request, res: Response) => {
     //   ES6 if else
     if (!user) {
       res.status(401).json({ message: "خطاء في البريد او كلمة المرور !" });
-    } else if (!(await argon2.verify(user.password, req.body.password))) {
-      res.json({ message: `worng password !! ` });
-    } else {
+    } 
+    else if ((!await argon2.verify(user.password, req.body.password))) {
+        res.status(401).json({ message: "خطاء في البريد او كلمة اeeeeeeeeeلمرور !" });
+    } 
+    else {
+      console.log("ghghgh");
+      
+console.log((!await argon2.verify(user.password, req.body.password)));
+
       let token = jwt.sign(
         {
           id: user.id,

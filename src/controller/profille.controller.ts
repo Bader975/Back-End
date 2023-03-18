@@ -118,7 +118,7 @@ export const getProfile = async (req: Request, res: Response) => {
     try {
         console.log("hhgg");
         
-        let profile=await prisma.profile.findFirst({
+        let profile=await prisma.profile.findMany({
             where:{
                 // id:req.params.id
                 user:{
@@ -133,7 +133,9 @@ export const getProfile = async (req: Request, res: Response) => {
                 user:{
                     select:{
                         email:true,
-                        name:true
+                        name:true,
+                        phone_number:true
+                        
                     }
                 }
             }

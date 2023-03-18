@@ -1,5 +1,5 @@
 import express from "express";
-import{createProject,UpdateProject,deleteProject,getAllProject,getAllProjectByID,countAllProject,get3Project,getProject}from "../controller/project.controller"
+import{createProject,UpdateProject,deleteProject,getAllProject,getAllProjectByID,countAllProject,get3Project,getProject,getTheUserProject}from "../controller/project.controller"
 import { validate } from "../middleware/validate";
 import { projectVaild } from "../zod.schema/project.zod ";
 import { protect, authorize } from "../middleware/auth";
@@ -9,6 +9,7 @@ let router = express.Router();
 
 
 router.get('/all', getAllProject)
+router.get('/userProject', getTheUserProject)
 router.get('/last3', get3Project)
 router.get('/:id', getProject)      
 router.get('/',protect,authorize('User'),getAllProjectByID)
