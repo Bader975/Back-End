@@ -13,7 +13,8 @@ export const createProject = async (req: Request, res: Response) => {
                     projectURL:req.body.projectURL,
                     img:req.body.img,
                     userID:res.locals.user.id,
-                    // date:req.body.date 
+                    date:req.body.date
+
             }
         })
         res.json({
@@ -61,7 +62,11 @@ export const getProject = async (req: Request, res: Response) => {
                 user:{
                     select:{
                         name:true,
-                      
+                        Profill:{
+                            select:{
+                                img:true
+                            }
+                        }
                     }
                 }
             }
@@ -149,7 +154,12 @@ export const getAllProject = async (req: Request, res: Response) => {
                 user:{
                     select:{
                         name:true,
-                        id:true
+                        id:true,
+                        Profill:{
+                            select:{
+                                img:true
+                            }
+                        }
                     }
                 }
             }
@@ -177,10 +187,17 @@ export const get3Project = async (req: Request, res: Response) => {
                 discription:true,
                 img:true,
                 nameOfCamp:true,
+                date:true,
                 user:{
                     select:{
                         name:true,
-                        id:true
+                        id:true,
+                        Profill:{
+                            select:{
+                                img:true
+                            }
+                        }
+                     
                     }
                 }
             }
