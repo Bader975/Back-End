@@ -116,7 +116,7 @@ export const getProfiletByID = async (req: Request, res: Response) => {
 
 export const getProfile = async (req: Request, res: Response) => {
     try {
-        console.log("hhgg");
+        // console.log("hhgg");
         
         let profile=await prisma.profile.findFirst({
             where:{
