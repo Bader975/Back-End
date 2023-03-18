@@ -29,7 +29,7 @@ model Project {
   nameOfCamp  String
   discription String
   projectURL  String
-  img         String
+  img         String @db.LongText
   date        String
   userID      String
   user        User   @relation(fields: [userID], references: [id])
@@ -39,7 +39,7 @@ model Project {
 model Profile {
   id            String  @id @default(uuid())
   aboutMy       String?
-  img           String  @default("https://bit.ly/broken-link")
+  img           String  @default("https://bit.ly/broken-link") @db.LongText
   skill         String?
   hobby         String?
   twitterURL    String?

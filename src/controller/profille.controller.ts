@@ -25,8 +25,6 @@ export const UpdateProfile = async (req: Request, res: Response) => {
         let data=req.body
         let profile=await prisma.profile.updateMany({
             where:{
-                id:req.params.id,
-                // id:res.locals.user.id,
                 userID:res.locals.user.id
             },
             data:data

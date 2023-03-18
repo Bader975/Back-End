@@ -12,7 +12,8 @@ export const createProject = async (req: Request, res: Response) => {
                     discription:req.body.discription,
                     projectURL:req.body.projectURL,
                     img:req.body.img,
-                    userID:res.locals.user.id
+                    userID:res.locals.user.id,
+                    // date:req.body.date 
             }
         })
         res.json({
