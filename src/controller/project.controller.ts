@@ -178,7 +178,7 @@ export const getAllProject = async (req: Request, res: Response) => {
 // get all project 
 export const get3Project = async (req: Request, res: Response) => {
     try {
-        
+        let data: any="";
         let Project=await prisma.project.findMany({
            take:3,
             select:{
@@ -188,6 +188,7 @@ export const get3Project = async (req: Request, res: Response) => {
                 img:true,
                 nameOfCamp:true,
                 date:true,
+
                 user:{
                     select:{
                         name:true,
