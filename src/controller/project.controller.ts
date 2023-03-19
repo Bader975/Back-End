@@ -106,7 +106,6 @@ export const getTheUserProject = async (req: Request, res: Response) => {
                 }
             }
         })
-        console.log(Project);
         
         res.json({
             Project
