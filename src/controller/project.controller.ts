@@ -151,6 +151,7 @@ export const getAllProject = async (req: Request, res: Response) => {
                 discription:true,
                 img:true,
                 nameOfCamp:true,
+                date:true,
                 user:{
                     select:{
                         name:true,
