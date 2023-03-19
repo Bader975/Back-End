@@ -184,7 +184,7 @@ export const get3Project = async (req: Request, res: Response) => {
             select:{
                 id:true,
                 title:true,
-                discription:true,
+                discription:true,   
                 img:true,
                 nameOfCamp:true,
                 date:true,
