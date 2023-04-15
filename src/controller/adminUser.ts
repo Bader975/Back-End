@@ -10,11 +10,12 @@ export const createCamp = async (req: Request, res: Response) => {
             data:data
         })
         res.json({
-            msg:'تم انشاء المعسكر',
+            message:'تم انشاء المعسكر',
             Camp
         })
         
     } catch (error) {
+        res.status(500).json({ message:"خطاء في النظام "})
         console.log(error);
         
     }
@@ -43,7 +44,6 @@ export const UpdateCamp = async (req: Request, res: Response) => {
 }
 export const deleteCamp = async (req: Request, res: Response) => {
     try {
-        console.log("hhh");
         
         let Camp=await prisma.camp.delete({
             where:{
