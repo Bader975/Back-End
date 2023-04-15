@@ -9,7 +9,7 @@ let router = express.Router();
 
 
 router.get('/all', getAllProject)
-router.get('/userProject', getTheUserProject)
+router.get('/userProject/:id', getTheUserProject)
 router.get('/last3', get3Project)
 router.get('/:id', getProject)      
 router.get('/',protect,authorize('User'),getAllProjectByID)
