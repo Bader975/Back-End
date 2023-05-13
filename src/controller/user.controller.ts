@@ -72,12 +72,11 @@ export const Login = async (req: Request, res: Response) => {
         email,
       },
     });
-    //   ES6 if else
-    if (!user) {
+
+    if (!user || (!await argon2.verify(user.password, req.body.password))) {
       res.status(401).json({ message: "خطاء في البريد او كلمة المرور !" });
-    } else if ((!await argon2.verify(user.password, req.body.password))) {
-      res.status(401).json({ message: "خطاء في البريد او كلمة المرور !" });
-    } else {
+    }
+    else {
       let token = jwt.sign(
         {
           id: user.id,
