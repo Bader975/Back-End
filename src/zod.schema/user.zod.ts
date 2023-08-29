@@ -43,7 +43,7 @@ export const userlogin = z.object({
     required_error: "يجب عليك ادخال البريد الالكتروني",
     
 })
-// .email({ message: "Invalid email address" })
+
 }),
 });
 

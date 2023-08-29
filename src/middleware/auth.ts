@@ -11,6 +11,7 @@ interface IUser {
 const protect = (req: Request, res: Response, next: NextFunction) => {
   try { 
     const header = req.headers.authorization;
+  
     if (!header) {
       return res.status(401).json({
         message: 'عذراً ! ليس لديك صلاحية لدخول هذه الصفحة',
