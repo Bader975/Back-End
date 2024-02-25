@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -34,13 +35,15 @@ model Project {
   userID      String
   user        User   @relation(fields: [userID], references: [id])
   camp        Camp   @relation(fields: [nameOfCamp], references: [name])
-  
+
+  @@index([userID])
+  @@index([nameOfCamp])
 }
 
 model Profile {
   id            String  @id @default(uuid())
   aboutMy       String?
-  img           String  @default("https://bit.ly/broken-link") @db.LongText
+  img           String  @default("https://bit.ly/broken-link")
   skill         String?
   hobby         String?
   twitterURL    String?
@@ -48,6 +51,8 @@ model Profile {
   nameOfpajeURL String?
   userID        String  @unique
   user          User    @relation(fields: [userID], references: [id])
+
+  @@index([userID])
 }
 
 model Camp {
@@ -69,4 +74,6 @@ model Idea {
   discription String
   userID      String
   user        User   @relation(fields: [userID], references: [id])
+
+  @@index([userID])
 }
